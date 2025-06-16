@@ -95,7 +95,7 @@ const CzechMap: React.FC<CzechMapProps> = ({
                   value={district}
                   checked={selectedDistrict === district}
                   onChange={(e) => handleDistrictSelect(e.target.value)}
-                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 focus:ring-2 mt-0.5 flex-shrink-0"
+                  className="w-4 h-4 text-blue-600 border-gray-300 focus:outline-none focus:ring-0"
                 />
                 <span className="text-sm text-gray-700 leading-5">
                   {district}
