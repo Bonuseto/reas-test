@@ -12,33 +12,10 @@ A form for collecting real estate leads with a modern React frontend and Node.js
 - **Docker support** for easy deployment
 - **Responsive design** that works on all devices
 
-## 🛠 Tech Stack
-
-### Frontend
-- React 18+ with TypeScript
-- React Router for routing
-- Tailwind CSS for styling
-- Form validation with custom hooks
-
-### Backend
-- Node.js with Express.js
-- MongoDB for data storage
-- Express Validator for input validation
-- CORS enabled for cross-origin requests
-
-### DevOps
-- Docker & Docker Compose
-- Environment-based configuration
-
-## 📋 Prerequisites
-
-- Node.js 18 or higher
-- MongoDB (local installation or MongoDB Atlas)
-- Docker and Docker Compose (for containerized deployment)
-
 ## 🔧 Installation & Setup
 
 ### Option 1: Docker Compose (Recommended)
+### IMPORTANT: Necessary MongoDB environment variable is already in files. It's not good practice for production, but for this project I left it there so everything is running out of the box
 
 1. **Clone the repository**
    ```bash
@@ -102,6 +79,30 @@ A form for collecting real estate leads with a modern React frontend and Node.js
    ```bash
    npm start
    ```
+
+## 🛠 Tech Stack
+
+### Frontend
+- React 18+ with TypeScript
+- React Router for routing
+- Tailwind CSS for styling
+- Form validation with custom hooks
+
+### Backend
+- Node.js with Express.js
+- MongoDB for data storage
+- Express Validator for input validation
+- CORS enabled for cross-origin requests
+
+### DevOps
+- Docker & Docker Compose
+- Environment-based configuration
+
+## 📋 Prerequisites
+
+- Node.js 18 or higher
+- MongoDB (local installation or MongoDB Atlas)
+- Docker and Docker Compose (for containerized deployment)
 
 ## 🌐 API Endpoints
 
