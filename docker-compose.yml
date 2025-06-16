@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: reas-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      # Replace with your MongoDB Atlas connection string
+      MONGODB_URI: mongodb+srv://fominyevgeniy:4ts2HoZVm4o9WN3Z@cluster0.bktp5cv.mongodb.net/reas-db?retryWrites=true&w=majority&appName=Cluster0
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - reas-network
+    depends_on:
+      - mongodb
+
+  # Frontend React App
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: reas-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - reas-network
+
+  # MongoDB Service
+  mongodb:
+    image: mongo:latest
+    container_name: reas-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - reas-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  reas-network:
+    driver: bridge 

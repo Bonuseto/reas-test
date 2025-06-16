@@ -1,46 +1,209 @@
-# Getting Started with Create React App
+# Reas Real Estate Lead Collection System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application for collecting real estate leads with a modern React frontend and Node.js backend.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Two-step form** for collecting property and contact information
+- **Czech regions and districts** with searchable dropdowns
+- **Input validation** for phone numbers and email addresses
+- **Modern UI** built with React and Tailwind CSS
+- **RESTful API** with Express.js and MongoDB
+- **Docker support** for easy deployment
+- **Responsive design** that works on all devices
 
-### `npm start`
+## 🛠 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Frontend
+- React 18+ with TypeScript
+- React Router for routing
+- Tailwind CSS for styling
+- Form validation with custom hooks
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Backend
+- Node.js with Express.js
+- MongoDB for data storage
+- Express Validator for input validation
+- CORS enabled for cross-origin requests
 
-### `npm test`
+### DevOps
+- Docker & Docker Compose
+- Environment-based configuration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📋 Prerequisites
 
-### `npm run build`
+- Node.js 18 or higher
+- MongoDB (local installation or MongoDB Atlas)
+- Docker and Docker Compose (for containerized deployment)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔧 Installation & Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Option 1: Docker Compose (Recommended)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd reas-test
+   ```
 
-### `npm run eject`
+2. **Run with Docker Compose**
+   ```bash
+   docker-compose up --build
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. **Access the application**
+   - Frontend: http://localhost:3000 (redirects to /chci-nabidku)
+   - Backend API: http://localhost:5000
+   - MongoDB: localhost:27017
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Option 2: Manual Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Backend Setup
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. **Navigate to backend directory**
+   ```bash
+   cd backend
+   ```
 
-## Learn More
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Set up environment variables**
+   Create a `.env` file in the backend directory:
+   ```env
+   MONGODB_URI=mongodb://localhost:27017/reas-db
+   PORT=5000
+   NODE_ENV=development
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Start MongoDB**
+   Make sure MongoDB is running on your system.
+
+5. **Start the backend server**
+   ```bash
+   npm run dev
+   ```
+
+#### Frontend Setup
+
+1. **Navigate to frontend directory**
+   ```bash
+   cd ../frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the React development server**
+   ```bash
+   npm start
+   ```
+
+## 🌐 API Endpoints
+
+### POST /lead
+Submit a new lead to the system.
+
+**Request Body:**
+```json
+{
+  "estateType": "byt|dům|pozemek",
+  "region": "Czech region name",
+  "district": "Czech district name", 
+  "fullname": "Full name",
+  "phone": "Czech phone number (e.g., 777 123 456)",
+  "email": "email@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Lead saved successfully",
+  "leadId": "ObjectId"
+}
+```
+
+### GET /regions
+Get list of Czech regions and their districts.
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "Region Name": ["District1", "District2"],
+    ...
+  }
+}
+```
+
+## 📱 Usage
+
+1. **Visit the homepage** at http://localhost:3000
+2. **You will be redirected to /chci-nabidku** to start the lead form
+3. **Step 1**: Select property type, region, and district
+4. **Step 2**: Enter contact information
+5. **Submit** the form to save the lead
+
+## 🔍 Form Validation
+
+- **Property type**: Required selection (apartment, house, or land)
+- **Region/District**: Must select valid Czech region and district
+- **Full name**: Minimum 2 characters
+- **Phone**: Czech phone number format (777 123 456 or +420 777 123 456)
+- **Email**: Valid email address format
+
+## 📂 Project Structure
+
+```
+reas-test/
+├── backend/                  # Node.js API server
+│   ├── package.json          # Backend dependencies
+│   ├── server.js             # Main server file
+│   ├── config.js             # Configuration
+│   └── Dockerfile            # Backend Docker config
+├── frontend/                 # React frontend source
+│   ├── src/                  # React source code
+│   │   ├── components/       # React components
+│   │   │   └── LeadForm.tsx  # Two-step form
+│   │   ├── App.tsx           # Main app component
+│   │   └── index.tsx         # App entry point
+│   ├── package.json          # Frontend dependencies
+│   └── Dockerfile            # Frontend Docker config
+├── docker-compose.yml        # Docker Compose configuration
+├── Dockerfile.frontend       # (Optional) Frontend Docker config
+├── nginx.conf                # Nginx configuration
+└── README.md                 # This file
+```
+
+## 🚀 Deployment
+
+### Production Build
+
+1. **Build frontend**
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. **Deploy with Docker Compose**
+   ```bash
+   docker-compose -f docker-compose.yml up --build -d
+   ```
+
+### Environment Variables
+
+Create appropriate `.env` files for production:
+
+**Backend .env:**
+```env
+MONGODB_URI=mongodb://your-mongodb-connection-string
+PORT=5000
+NODE_ENV=production
+```
