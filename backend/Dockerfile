@@ -4,6 +4,9 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
+# Install system CA certificates for TLS
+RUN apk add --no-cache ca-certificates
+
 # Copy package files
 COPY backend/package*.json ./
 
