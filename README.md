@@ -1,6 +1,6 @@
 # Reas Real Estate Lead Collection System
 
-A full-stack web application for collecting real estate leads with a modern React frontend and Node.js backend.
+A form for collecting real estate leads with a modern React frontend and Node.js backend.
 
 ## 🚀 Features
 
@@ -126,20 +126,6 @@ Submit a new lead to the system.
   "success": true,
   "message": "Lead saved successfully",
   "leadId": "ObjectId"
-}
-```
-
-### GET /regions
-Get list of Czech regions and their districts.
-
-**Response:**
-```json
-{
-  "success": true,
-  "data": {
-    "Region Name": ["District1", "District2"],
-    ...
-  }
 }
 ```
 
