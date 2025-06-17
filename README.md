@@ -80,6 +80,28 @@ A form for collecting real estate leads with a modern React frontend and Node.js
    npm start
    ```
 
+## 📸 Screenshots
+
+### Desktop View
+![Desktop 1](screenshots/desktop_1.png)
+
+### Tablet View
+![Desktop 2](screenshots/desktop_2.png)
+
+### Mobile Views
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>Navigation Closed</h4>
+      <img src="screenshots/mobile_1.png" alt="Mobile View 1" width="100%">
+    </td>
+    <td width="50%" valign="top">
+      <h4>Navigation Opened</h4>
+      <img src="screenshots/mobile_2.png" alt="Mobile View 2" width="100%">
+    </td>
+  </tr>
+</table>
+
 ## 🛠 Tech Stack
 
 ### Frontend
